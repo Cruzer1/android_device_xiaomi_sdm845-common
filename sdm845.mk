@@ -256,10 +256,9 @@ PRODUCT_PACKAGES += \
 
 # RCS
 PRODUCT_PACKAGES += \
-    rcs_service_aidl \
-    rcs_service_aidl.xml \
-    rcs_service_api \
-    rcs_service_api.xml
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -319,10 +318,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
-
-# VNDK-SP
-PRODUCT_PACKAGES += \
-    vndk-sp
 
 # VR
 PRODUCT_PACKAGES += \
