@@ -46,9 +46,6 @@ endif
 TARGET_BOARD_PLATFORM := sdm845
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-
 # Audio
 AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
@@ -66,9 +63,6 @@ TARGET_USE_QTI_BT_STACK := true
 
 # Camera
 TARGET_USES_QTI_CAMERA_DEVICE := true
-
-# Charger Mode
-BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Dex
 ifeq ($(HOST_OS),linux)
@@ -118,7 +112,7 @@ TARGET_USES_MKE2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Power
-TARGET_POWER_SET_FEATURE_LIB := libpower_feature.xiaomi_sdm845
+TARGET_POWERHAL_MODE_EXT := $(COMMON_PATH)/power/power-mode.cpp
 
 # Properties
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
@@ -142,17 +136,16 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2020-05-01
+VENDOR_SECURITY_PATCH := 2020-09-01
 
-# Sepolicy
-include device/qcom/sepolicy/sepolicy.mk
+# SELinux
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/public
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
@@ -165,6 +158,7 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
 WIFI_DRIVER_STATE_OFF := "OFF"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
