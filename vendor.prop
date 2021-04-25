@@ -133,9 +133,7 @@ ro.vendor.audio.soundtrigger.hist.duration=1500
 
 # Network manager
 persist.vendor.data.iwlan.enable=true
-
-# Perf
-ro.vendor.extension_library=libqti-perfd-client.so
+ro.telephony.iwlan_operation_mode=legacy
 
 # USB
 vendor.usb.diag.func.name=diag
